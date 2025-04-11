@@ -6,6 +6,7 @@ import {
   text,
   singlestoreTable,
   datetime,
+  timestamp,
   index,
   singlestoreTableCreator,
 } from "drizzle-orm/singlestore-core";
@@ -25,6 +26,8 @@ export const files_table = createTable(
     url: text("url").notNull(),
     parent: bigint("parent", { mode: "number", unsigned: true }),
     mimeType: text("mime_type"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdate(() => new Date()), 
   },
   (t) => {
     return [index("parent_index").on(t.parent)];
@@ -41,6 +44,8 @@ export const folders_table = createTable(
       .autoincrement(),
     name: text("name"),
     parent: bigint("parent", { mode: "number", unsigned: true }),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdate(() => new Date()), 
   },
   (t) => {
     return [index("parent_index").on(t.parent)];
