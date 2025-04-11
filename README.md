@@ -1,29 +1,52 @@
-# Create T3 App
+<div>
+  <h1 align="center">Next.js AI Chatbot</h1>
+</div>
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+<p align="center">
+  An Open-Source File and Folder Management Built
+</p>
 
-## What's next? How do I make an app with this?
+<p align="center">
+  <a href="#features"><strong>Features</strong></a> ·
+  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
+  <a href="#running-locally"><strong>Running locally</strong></a>
+</p>
+<br/>
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Features
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
+- [Next.js](https://nextjs.org) App Router
+  - Advanced routing for seamless navigation and performance
+  - React Server Components (RSCs) and Server Actions for server-side rendering and increased performance
 - [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+  - ORM that you can rely on
+- [TRPC](https://trpc.io)
+  - End to End typesafe apis
+- [tailwind](https://tailwindcss.com)
+  - Styling with [Tailwind CSS](https://tailwindcss.com)
+- [singlestore](https://singlestore.com)
+  - [Single store](https://singlestore.com) for saving files and folders metadata
+- [Clerk](https://clerk.com/docs)
+  - Simple and secure authentication
 
-## Learn More
+## Deploy Your Own
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+1. Install Vercel CLI: `npm i -g vercel`
+2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
+3. Download your environment variables: `vercel env pull`
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## TODO
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## Running locally
 
-## How do I deploy this?
+You will need to use the environment variables [defined in `.env.example`](.env.example) to run my-bucket. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/projects/environment-variables) for this, but a `.env` file is all that is necessary.
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various file and authentication provider accounts.
+
+```bash
+npm install
+npm run db:push
+npm run dev
+```
+
+Your app template should now be running on [localhost:3000](http://localhost:3000/).
