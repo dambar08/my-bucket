@@ -5,7 +5,11 @@ import Link from "next/link";
 import {
   ChevronRight,
   File,
+  FileUp,
   Folder,
+  FolderPlus,
+  Folders,
+  FolderUp,
   Grid3X3,
   Home,
   List,
@@ -32,8 +36,11 @@ import {
 import { cn } from "@/lib/utils";
 import { mockDriveData as initialData } from "@/lib/mock-data";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { UploadButton, UploadDropzone } from "@/components/uploadthing";
+import { useRouter } from "next/navigation";
 
 export default function GoogleDriveClone() {
+  const navigate = useRouter();
   const [currentFolder, setCurrentFolder] = useState("root");
   const [breadcrumbs, setBreadcrumbs] = useState([
     { id: "root", name: "My Drive" },
@@ -77,6 +84,18 @@ export default function GoogleDriveClone() {
 
   return (
     <div className="flex h-screen flex-col">
+      <UploadButton
+        endpoint="imageUploader"
+        onClientUploadComplete={() => {
+          navigate.refresh();
+        }}
+      />
+      <UploadDropzone
+        endpoint="imageUploader"
+        onClientUploadComplete={() => {
+          navigate.refresh();
+        }}
+      />
       {/* Header */}
       <header className="flex items-center border-b px-6 py-3">
         <div className="flex items-center">
@@ -111,13 +130,30 @@ export default function GoogleDriveClone() {
         {/* Sidebar */}
         <aside className="w-64 border-r p-4">
           <div className="mb-6">
-            <Button
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-white hover:bg-blue-700"
-              onClick={handleFileUpload}
-            >
-              <Plus className="h-5 w-5" />
-              <span>New</span>
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-white hover:bg-blue-600"
+                >
+                  <Plus className="h-5 w-5" />
+                  <span>New</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center">
+                <DropdownMenuItem>
+                  <FolderPlus className="mr-2 h-4 w-4" />
+                  New Folder
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <FileUp className="mr-2 h-4 w-4" />
+                  File Upload
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <FolderUp className="mr-2 h-4 w-4" />
+                  Folder upload
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           <nav className="space-y-1">
