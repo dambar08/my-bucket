@@ -1,5 +1,5 @@
 <div>
-  <h1 align="center">Next.js AI Chatbot</h1>
+  <h1 align="center">My Bucket</h1>
 </div>
 
 <p align="center">
