@@ -3,6 +3,7 @@ import { ChevronRight, Grid3X3, List, Upload } from "lucide-react"
 import { Button } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils"
+import { FileItem } from "./file-item";
 
 interface Breadcrumb {
   id: string
