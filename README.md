@@ -3,7 +3,7 @@
 </div>
 
 <p align="center">
-  An Open-Source File and Folder Management Built
+  An Open-Source File and Folder Management
 </p>
 
 <p align="center">
