@@ -100,10 +100,10 @@ export function FileItem({
         <span>Me</span>
       </div>
       <div className="col-span-2 flex items-center">
-        <span>{item.modified || "—"}</span>
+        <span>{item.modified ?? "—"}</span>
       </div>
       <div className="col-span-2 flex items-center">
-        <span>{item.size || "—"}</span>
+        <span>{item.size ?? "—"}</span>
       </div>
     </div>
   );

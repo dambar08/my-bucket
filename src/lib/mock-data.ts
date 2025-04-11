@@ -97,3 +97,22 @@ export const mockDriveData = {
     modified: "Apr 7, 2025",
   },
 };
+
+export type File = {
+  id: string,
+  name: string,
+  type: "file",
+  url: string,
+  mimeType: string,
+  parent: string,
+  size: string
+}
+
+export type Folder = {
+  id: string,
+  name: string,
+  type: "folder",
+  url: string,
+  parent: string | null,
+  size: string
+}
