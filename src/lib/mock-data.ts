@@ -2,7 +2,7 @@
 export const mockDriveData = {
   root: {
     id: "root",
-    name: "My Drive",
+    name: "My Bucket",
     type: "folder",
     children: ["folder1", "folder2", "file1", "file2", "file3"],
   },
@@ -98,21 +98,84 @@ export const mockDriveData = {
   },
 };
 
+export const mockFolders: Folder[] = [
+  { id: "root", name: "root", type: "folder", parent: null },
+  { id: "1", name: "Documents", type: "folder", parent: "root" },
+  { id: "2", name: "Images", type: "folder", parent: "root" },
+  { id: "3", name: "Work", type: "folder", parent: "root" },
+  { id: "4", name: "Presentation", type: "folder", parent: "3" },
+];
+
+export const mockFiles: File[] = [
+  {
+    id: "1",
+    type: "file",
+    name: "resume.pdf",
+    url: "files/resume.pdf",
+    parent: "root",
+    mimeType: "application/pdf",
+    size: "1.2MB",
+  },
+  {
+    id: "2",
+    type: "file",
+    name: "Project plan.xlsx",
+    url: "files/prject_plan.pdf",
+    parent: "root",
+    mimeType: "application/word",
+    size: "1.2MB",
+  },
+  {
+    id: "3",
+    type: "file",
+    name: "resume.pdf",
+    url: "files/resume.pdf",
+    parent: "root",
+    mimeType: "application/pdf",
+    size: "1.2MB",
+  },
+  {
+    id: "4",
+    type: "file",
+    name: "resume.pdf",
+    url: "files/resume.pdf",
+    parent: "root",
+    mimeType: "application/pdf",
+    size: "1.2MB",
+  },
+  {
+    id: "5",
+    type: "file",
+    name: "resume.pdf",
+    url: "files/resume.pdf",
+    parent: "1",
+    mimeType: "application/pdf",
+    size: "1.2MB",
+  },
+  {
+    id: "6",
+    type: "file",
+    name: "resume.pdf",
+    url: "files/resume.pdf",
+    parent: "2",
+    mimeType: "application/pdf",
+    size: "1.2MB",
+  },
+] satisfies File[];
+
 export type File = {
-  id: string,
-  name: string,
-  type: "file",
-  url: string,
-  mimeType: string,
-  parent: string,
-  size: string
-}
+  id: string;
+  name: string;
+  type: "file";
+  url: string;
+  mimeType: string;
+  parent: string;
+  size: string;
+};
 
 export type Folder = {
-  id: string,
-  name: string,
-  type: "folder",
-  url: string,
-  parent: string | null,
-  size: string
-}
+  id: string;
+  name: string;
+  type: "folder";
+  parent: string | null;
+};
