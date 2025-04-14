@@ -13,6 +13,6 @@ export const MUTATIONS = {
     };
     userId: string;
   }) {
-    const fileUrl = await db.insert(files_table).values(input.file);
+    return await db.insert(files_table).values(input.file);
   },
 };
