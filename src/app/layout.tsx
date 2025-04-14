@@ -24,8 +24,9 @@ const geistMono = Geist_Mono({
 import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {
-  title: "My Bucket",
-  description: "My bucket",
+  title: "My Bucket - Secure, Scalable File Storage for Your Applications",
+  description: "Store and serve files with ease. Our storage bucket solution provides a simple, reliable way to manage your application's files.",
+  keywords: ["storage", "file storage", "cloud storage", "bucket", "file management", "object storage"],
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
