@@ -15,6 +15,29 @@ export const createTable = singlestoreTableCreator(
   (name) => `my-bucket_${name}`,
 );
 
+export const users_table = createTable(
+  "users_table",
+  {
+    id: bigint("id", { mode: "number", unsigned: true })
+      .primaryKey()
+      .autoincrement(),
+    email: text("email"),
+    firstname: text("firstname"),
+    lastname: text("lastname"),
+    imageUrl: text("image_url"),
+    clerkUserId: text("clerk_user_id"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdate(() => new Date()), 
+  },
+  (t) => {
+    return [index("clerk_user_id_index").on(t.clerkUserId),
+      index("email_index").on(t.email)
+    ];
+  },
+);
+
+export type DB_UserType = typeof users_table.$inferSelect;
+
 export const files_table = createTable(
   "files_table",
   {

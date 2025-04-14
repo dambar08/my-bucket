@@ -17,6 +17,9 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    CLERK_MIDDLEWARE_DEBUG: z.enum(["true", "false"]).default("false"),
+    CLERK_SECRET_KEY: z.string(),
+    CLERK_WEBHOOK_SIGNING_SECRET: z.string(),
   },
 
   /**
@@ -25,6 +28,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
   },
 
@@ -34,13 +38,18 @@ export const env = createEnv({
    */
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
-    DATABASE_HOST: process.env.DATABASE_HOST, 
-    DATABASE_PORT: process.env.DATABASE_PORT, 
-    DATABASE_USERNAME: process.env.DATABASE_USERNAME, 
+    DATABASE_HOST: process.env.DATABASE_HOST,
+    DATABASE_PORT: process.env.DATABASE_PORT,
+    DATABASE_USERNAME: process.env.DATABASE_USERNAME,
     DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
-    DATABASE_NAME: process.env.DATABASE_NAME, 
+    DATABASE_NAME: process.env.DATABASE_NAME,
     UPLOADTHING_TOKEN: process.env.UPLOADTHING_TOKEN,
     NODE_ENV: process.env.NODE_ENV,
+    CLERK_MIDDLEWARE_DEBUG: process.env.CLERK_MIDDLEWARE_DEBUG,
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
+      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+    CLERK_WEBHOOK_SIGNING_SECRET: process.env.CLERK_WEBHOOK_SIGNING_SECRET,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
